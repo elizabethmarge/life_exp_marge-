@@ -1,0 +1,11 @@
+---
+title: "life_exp_analysis.Rmd"
+author: "Elizabeth Marge"
+date: "1/25/2021"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
