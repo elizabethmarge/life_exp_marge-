@@ -9,3 +9,40 @@ output: word_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+
+library(tidyverse)
+library(gapminder)
+data(gapminder_unfiltered)
+
+```
+
+
+
+```{r}
+
+gapminder_unfiltered %>% 
+  group_by(year)%>% 
+  filter(lifeExp == max(lifeExp)) %>%
+  ungroup() %>%
+  select(year, country, lifeExp) %>%
+  arrange(year) -> 
+  sumdat
+
+
+```
+
+
+```{r}
+
+sumdat %>% 
+  ggplot(aes(x= year, y = lifeExp)) +
+  geom_point(aes(color = country)) + 
+  geom_point(pch = 1 ) +
+  theme_bw() +
+  geom_smooth(method = "lm", se = FALSE) +
+  xlab("Year") +
+  ylab("Maximum Life Epectancy") +
+  scale_color_discrete(name = "Country")
+
+```
